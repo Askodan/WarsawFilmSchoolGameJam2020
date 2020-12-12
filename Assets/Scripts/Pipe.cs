@@ -1,6 +1,8 @@
 using UnityEngine;
 
 public class Pipe : MonoBehaviour {
+	public GameObject itemSpacer;
+	public float itemAngle;
 	public float pipeRadius;
 	public int pipeSegmentCount;
 
@@ -18,6 +20,8 @@ public class Pipe : MonoBehaviour {
 	private Mesh mesh;
 	private Vector3[] vertices;
 	private int[] triangles;
+
+	private GameObject[,] possiblePlaces;
 
 	public float curveAngle{
 		get;
@@ -43,6 +47,13 @@ public class Pipe : MonoBehaviour {
 		SetVertices();
 		SetTriangles();
 		mesh.RecalculateNormals();
+		if(possiblePlaces != null)
+		{
+			foreach (Transform child in transform) {
+			   GameObject.Destroy(child.gameObject);
+			}
+		}
+		generateSpawnPoints();
 	}
 
 	private Vector3 GetPointOnTorus (float u, float v) {
@@ -81,6 +92,9 @@ public class Pipe : MonoBehaviour {
 		transform.Translate(0f, -curveRadius, 0f);
 		transform.SetParent(pipe.transform.parent);
 		transform.localScale = Vector3.one;
+		// foreach (Transform child in transform) {
+		//    GameObject.Destroy(child.gameObject);
+		// }
 	}
 
 	private void SetVertices () {
@@ -133,20 +147,29 @@ public class Pipe : MonoBehaviour {
 		mesh.triangles = triangles;
 	}
 
-	public Vector3[,] getSpawnLocations()
+	private void generateSpawnPoints()
 	{
-			float uStep = (2f * Mathf.PI) / curveSegmentCount;
-			float vStep = (2f * Mathf.PI) / pipeSegmentCount;
-
-			Vector3[,] output = new Vector3[pipeSegmentCount, curveSegmentCount];
-
-			for (int u = 0; u < curveSegmentCount; u++) {
-				for (int v = 0; v < pipeSegmentCount; v++) {
-					Vector3 point = GetPointOnTorus(u * uStep, v * vStep);
-					output[v, u] = point;
-				}
+		possiblePlaces = new GameObject[(int)(curveAngle / itemAngle), 10];
+		for(int i = 0; i < possiblePlaces.GetLength(0); i++){
+			for(int j = 0; j < possiblePlaces.GetLength(1); j++){
+				Vector3 vec = GetPointInTorus(
+					(i * curveAngle * 2f * Mathf.PI / 360f) / possiblePlaces.GetLength(0),
+					(j * 2f * Mathf.PI) / possiblePlaces.GetLength(1),
+					1f
+				);
+				possiblePlaces[i, j] = Instantiate(
+					itemSpacer,
+					transform.TransformPoint(vec),
+					Quaternion.identity,
+					transform
+				);
 			}
-			return output;
+		}
+	}
+
+	public GameObject[,] getSpawnLocations()
+	{
+		return possiblePlaces;
 	}
 
 	private Vector3 GetPointInTorus (float u, float v, float below_surface) {
@@ -154,7 +177,7 @@ public class Pipe : MonoBehaviour {
 		float r = (curveRadius + (pipeRadius - below_surface) * Mathf.Cos(v));
 		p.x = r * Mathf.Sin(u);
 		p.y = r * Mathf.Cos(u);
-		p.z = pipeRadius * Mathf.Sin(v);
+		p.z = (pipeRadius - below_surface) * Mathf.Sin(v);
 		return p;
 	}
 }
