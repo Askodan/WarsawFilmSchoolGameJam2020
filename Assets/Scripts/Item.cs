@@ -20,11 +20,12 @@ public class Item : MonoBehaviour
     }
     IEnumerator DestroyLater(float when)
     {
-        Instantiate(effect, transform.position, transform.rotation);
+        var grab_effect = Instantiate(effect, transform.position, transform.rotation);
         int children = transform.childCount;
         for (int i = 0; i < children; ++i)
             transform.GetChild(i).gameObject.SetActive(false);
         yield return new WaitForSeconds(when);
+        Destroy(grab_effect.gameObject);
         Destroy(gameObject);
     }
 }
