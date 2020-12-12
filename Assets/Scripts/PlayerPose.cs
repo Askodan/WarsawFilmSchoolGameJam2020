@@ -5,20 +5,18 @@ using UnityEngine.InputSystem;
 
 public class PlayerPose : MonoBehaviour
 {
+    Animator anim;
     public Pose[] availablePoses;
     private int currentPose;
 
     public int CurrentPose { get => currentPose; }
 
+    void Awake()
+    {
+        anim = GetComponentInChildren<Animator>();
+    }
     void Start()
     {
-        for (int i = 0; i < availablePoses.Length; i++)
-        {
-            if (currentPose == i)
-                availablePoses[i].Show();
-            else
-                availablePoses[i].Hide();
-        }
     }
 
     private void OnChangePose(InputValue value)
@@ -29,8 +27,7 @@ public class PlayerPose : MonoBehaviour
     }
     private void ChangeCurrentPose(int change)
     {
-        availablePoses[currentPose].Hide();
+        anim.SetInteger("Action", currentPose);
         currentPose = (int)Mathf.Repeat(currentPose + change, availablePoses.Length);
-        availablePoses[currentPose].Show();
     }
 }
