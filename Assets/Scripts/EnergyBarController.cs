@@ -20,8 +20,10 @@ public class EnergyBarController : MonoBehaviour
 
     public void modifyEnergy(float modifier)
     {
-      energy = modifier;
-      scaleChange = new Vector3(1.0f,energy,1.0f);
-      energyBarTransform.localScale = scaleChange;
+      if(energyBarTransform != null) {
+            energy = modifier;
+            scaleChange = new Vector3(1.0f,energy,1.0f);
+            energyBarTransform.localScale = scaleChange;
+      }
     }
 }
