@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+  public Modifier[] modifiers;
+
   void OnTriggerEnter(Collider other)
   {
-    Debug.Log("Collision");
     if(other.gameObject.tag == "Player")
     {
       Player p = other.gameObject.GetComponentInParent(typeof(Player)) as Player;
-      p.affect();
+      p.affect(modifiers);
       Destroy(gameObject);
     }
   }

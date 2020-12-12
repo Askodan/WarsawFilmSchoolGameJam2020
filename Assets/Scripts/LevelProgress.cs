@@ -11,6 +11,7 @@ public class LevelProgress : MonoBehaviour
     public float levelLength;
     public float LevelLength { get { return velocity * levelLength; } }
 
+    private float startVelocity;
 
     private Pipe currentPipe;
     private float distanceTraveled;
@@ -25,6 +26,7 @@ public class LevelProgress : MonoBehaviour
 
     private void Start()
     {
+        startVelocity = velocity;
         world = pipeSystem.transform.parent;
         currentPipe = pipeSystem.SetupFirstPipe();
         SetupCurrentPipe();
@@ -48,6 +50,12 @@ public class LevelProgress : MonoBehaviour
 
     private void Update()
     {
+        float velDiff = velocity - startVelocity;
+        if(Mathf.Abs(velDiff) > 0.01f)
+        {
+          velocity -= velDiff * 0.01f;
+        }
+
         float delta = velocity * Time.deltaTime;
         distanceTraveled += delta;
         systemRotation += delta * deltaToRotation;
@@ -63,5 +71,11 @@ public class LevelProgress : MonoBehaviour
 
         pipeSystem.transform.localRotation =
             Quaternion.Euler(0f, 0f, systemRotation);
+    }
+
+    public void modifySpeed(float amount)
+    {
+      velocity += amount;
+      velocity = Mathf.Clamp(velocity, 1.0f, 20.0f);
     }
 }
