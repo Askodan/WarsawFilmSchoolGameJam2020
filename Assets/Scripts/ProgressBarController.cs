@@ -25,7 +25,7 @@ public class ProgressBarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        progress = levelProgress.DistanceTraveled / levelProgress.levelLength;
+        progress = levelProgress.DistanceTraveled / levelProgress.LevelLength;
         //Gdy coś będziemy robić, tutaj trzeba będzie zrobić wypełnianie.
         progress = Mathf.Clamp(progress, 0.0f, 1.0f);
         scaleChange = new Vector3(progress, 1.0f, 1.0f);

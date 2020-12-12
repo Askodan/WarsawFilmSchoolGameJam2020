@@ -9,6 +9,7 @@ public class LevelProgress : MonoBehaviour
 
     public float velocity;
     public float levelLength;
+    public float LevelLength { get { return velocity * levelLength; } }
 
 
     private Pipe currentPipe;
@@ -26,7 +27,6 @@ public class LevelProgress : MonoBehaviour
     {
         world = pipeSystem.transform.parent;
         currentPipe = pipeSystem.SetupFirstPipe();
-        Debug.Log(currentPipe);
         SetupCurrentPipe();
     }
 
