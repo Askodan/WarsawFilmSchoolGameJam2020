@@ -36,6 +36,7 @@ public class PipeSystem : MonoBehaviour
 		pipes[pipes.Length - 1].Generate();
 		pipes[pipes.Length - 1].AlignWith(pipes[pipes.Length - 2]);
 		transform.localPosition = new Vector3(0f, -pipes[1].curveRadius);
+    itemSpawner.spawnItems(pipes[2]);
 		return pipes[1];
 	}
 

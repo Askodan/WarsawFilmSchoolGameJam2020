@@ -576,9 +576,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e46ee7225f26461488cd07f8fee91085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0
-  rotationAcceleration: 100
-  rotationDump: 10
+  rotationAxis: {x: 1, y: 0, z: 0}
+  dumpThreshold: 0.1
+  accelerationPower: 100
+  dumpPower: 50
+  speedLimit: 300
 --- !u!114 &8918963944461713423
 MonoBehaviour:
   m_ObjectHideFlags: 0
