@@ -7,19 +7,18 @@ public class ItemSpawner : MonoBehaviour {
 
   public void spawnItems(Pipe pipe){
     GameObject[,] potential_spots = pipe.getSpawnLocations();
-    foreach(GameObject item in itemsToGenerate)
+
+    for(int i = 0; i < potential_spots.GetLength(0); i++)
     {
-      for(int i = 0; i < potential_spots.GetLength(0); i++)
+      for(int j = 0; j < potential_spots.GetLength(1); j++)
       {
-        for(int j = 0; j < potential_spots.GetLength(1); j++)
-        {
-          Instantiate(
-            item,
-            potential_spots[i, j].transform.position, 
-            Quaternion.identity,
-            pipe.transform
-            );
-        }
+        GameObject item = itemsToGenerate[(int)Random.Range(0, itemsToGenerate.Length)];
+        Instantiate(
+          item,
+          potential_spots[i, j].transform.position,
+          Quaternion.identity,
+          pipe.transform
+          );
       }
     }
   }
