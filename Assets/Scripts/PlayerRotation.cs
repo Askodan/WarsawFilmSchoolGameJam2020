@@ -5,14 +5,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerRotation : MonoBehaviour
 {
-    public Vector3 rotationAxis = Vector3.forward;
-    public float dumpThreshold = 0.1f;
-    public float accelerationPower = 100;
-    public float dumpPower = 50;
-    public float speedLimit = 300;
+    public float rotationSpeed;
+    public float rotationAcceleration;
+    public float rotationDump;
+
     private float steering;
     private float currentRotation;
-    private float rotationSpeed;
+
     private void Update()
     {
         CalculateSpeed();
@@ -20,20 +19,19 @@ public class PlayerRotation : MonoBehaviour
     }
     private void CalculateSpeed()
     {
-        if (Mathf.Abs(steering) >= dumpThreshold)
+        if (steering != 0f)
         {
-            rotationSpeed -= steering * accelerationPower * Time.deltaTime;
-            rotationSpeed = Mathf.Clamp(rotationSpeed, -speedLimit, speedLimit);
+            rotationSpeed -= steering * rotationAcceleration * Time.deltaTime;
         }
         else
         {
-            rotationSpeed = Mathf.MoveTowards(rotationSpeed, 0f, dumpPower * Time.deltaTime);
+            rotationSpeed = Mathf.MoveTowards(rotationSpeed, 0f, rotationDump * Time.deltaTime);
         }
     }
     private void UpdateRotation()
     {
         currentRotation += rotationSpeed * Time.deltaTime;
-        transform.rotation = Quaternion.Euler(rotationAxis * currentRotation);
+        transform.rotation = Quaternion.Euler(0f, 0f, currentRotation);
     }
     private void OnRotation(InputValue value)
     {
