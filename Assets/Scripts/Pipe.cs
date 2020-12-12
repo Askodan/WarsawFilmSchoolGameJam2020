@@ -71,7 +71,7 @@ public class Pipe : MonoBehaviour {
 	//
 	// 	for (int u = 0; u < curveSegmentCount; u++) {
 	// 		for (int v = 0; v < pipeSegmentCount; v++) {
-	// 			Vector3 point = GetPointInTorus(u * uStep, v * vStep, -1);
+	// 			Vector3 point = GetPointOnTorus(u * uStep, v * vStep);
 	// 			Gizmos.color = new Color(
 	// 				1f,
 	// 				(float)v / pipeSegmentCount,
@@ -180,5 +180,4 @@ public class Pipe : MonoBehaviour {
 		p.z = (pipeRadius - below_surface) * Mathf.Sin(v);
 		return p;
 	}
-
 }

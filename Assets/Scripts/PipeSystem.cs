@@ -7,7 +7,8 @@ public class PipeSystem : MonoBehaviour
   public Pipe pipePrefab;
   public int spawn_at = 4;
 
-	public int pipeCount;
+    public int pipeCount;
+
 
 	private Pipe[] pipes;
   private ItemSpawner itemSpawner;
@@ -26,44 +27,52 @@ public class PipeSystem : MonoBehaviour
     AlignNextPipeWithOrigin();
 	}
 
-  public Pipe SetupFirstPipe () {
-		transform.localPosition = new Vector3(0f, -pipes[1].curveRadius);
-		return pipes[1];
-	}
+    public Pipe SetupFirstPipe()
+    {
+        transform.localPosition = new Vector3(0f, -pipes[1].curveRadius);
+        return pipes[1];
+    }
 
-	public Pipe SetupNextPipe () {
-		ShiftPipes();
-		AlignNextPipeWithOrigin();
-		pipes[pipes.Length - 1].Generate();
-		pipes[pipes.Length - 1].AlignWith(pipes[pipes.Length - 2]);
-		transform.localPosition = new Vector3(0f, -pipes[1].curveRadius);
-    itemSpawner.spawnItems(pipes[spawn_at]);
-		return pipes[1];
-	}
+    public Pipe SetupNextPipe()
+    {
+        ShiftPipes();
+        AlignNextPipeWithOrigin();
+        pipes[pipes.Length - 1].Generate();
+        pipes[pipes.Length - 1].AlignWith(pipes[pipes.Length - 2]);
+        transform.localPosition = new Vector3(0f, -pipes[1].curveRadius);
+        return pipes[1];
+    }
 
-  private void ShiftPipes () {
-		Pipe temp = pipes[0];
-		for (int i = 1; i < pipes.Length; i++) {
-			pipes[i - 1] = pipes[i];
-		}
-		pipes[pipes.Length - 1] = temp;
-	}
+    private void ShiftPipes()
+    {
+        Pipe temp = pipes[0];
+        for (int i = 1; i < pipes.Length; i++)
+        {
+            pipes[i - 1] = pipes[i];
+        }
+        pipes[pipes.Length - 1] = temp;
+    }
 
-  private void AlignNextPipeWithOrigin () {
-		Transform transformToAlign = pipes[1].transform;
-		for (int i = 0; i < pipes.Length; i++) {
-			if (i != 1) {
-				pipes[i].transform.SetParent(transformToAlign);
-			}
-		}
+    private void AlignNextPipeWithOrigin()
+    {
+        Transform transformToAlign = pipes[1].transform;
+        for (int i = 0; i < pipes.Length; i++)
+        {
+            if (i != 1)
+            {
+                pipes[i].transform.SetParent(transformToAlign);
+            }
+        }
 
-		transformToAlign.localPosition = Vector3.zero;
-		transformToAlign.localRotation = Quaternion.identity;
+        transformToAlign.localPosition = Vector3.zero;
+        transformToAlign.localRotation = Quaternion.identity;
 
-		for (int i = 0; i < pipes.Length; i++) {
-			if (i != 1) {
-				pipes[i].transform.SetParent(transform);
-			}
-		}
-	}
+        for (int i = 0; i < pipes.Length; i++)
+        {
+            if (i != 1)
+            {
+                pipes[i].transform.SetParent(transform);
+            }
+        }
+    }
 }

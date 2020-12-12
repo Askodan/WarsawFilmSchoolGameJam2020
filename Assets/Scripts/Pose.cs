@@ -17,10 +17,10 @@ public class Pose
 
     public void Show()
     {
-        visualization.SetActive(true);
+        //visualization.SetActive(true);
     }
     public void Hide()
     {
-        visualization.SetActive(false);
+        //visualization.SetActive(false);
     }
 }
