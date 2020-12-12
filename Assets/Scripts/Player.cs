@@ -27,6 +27,7 @@ public class Player : MonoBehaviour {
   private void SetupCurrentPipe () {
 		deltaToRotation = 360f / (2f * Mathf.PI * currentPipe.curveRadius);
 		worldRotation += currentPipe.relativeRotation;
+
 		if (worldRotation < 0f) {
 			worldRotation += 360f;
 		}
