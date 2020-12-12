@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5237ba867e339785b59b395d0ae9e4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSpacer: {fileID: 2419280272933240249, guid: e688a87367c0d0b0fb9877a0e20d1fc5,
+  itemSpacer: {fileID: 7379254152298018939, guid: d75c12a9df6519eb39791f9a675423db,
     type: 3}
+  itemAngle: 20
   pipeRadius: 3
   pipeSegmentCount: 10
   minCurveRadius: 12

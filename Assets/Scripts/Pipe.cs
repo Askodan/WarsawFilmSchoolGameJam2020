@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Pipe : MonoBehaviour {
 	public GameObject itemSpacer;
+	public float itemAngle;
 	public float pipeRadius;
 	public int pipeSegmentCount;
 
@@ -20,7 +21,7 @@ public class Pipe : MonoBehaviour {
 	private Vector3[] vertices;
 	private int[] triangles;
 
-	private Vector3[,] possiblePlaces;
+	private GameObject[,] possiblePlaces;
 
 	public float curveAngle{
 		get;
@@ -148,20 +149,25 @@ public class Pipe : MonoBehaviour {
 
 	private void generateSpawnPoints()
 	{
-		possiblePlaces = new Vector3[curveSegmentCount, 10];
+		possiblePlaces = new GameObject[(int)(curveAngle / itemAngle), 10];
 		for(int i = 0; i < possiblePlaces.GetLength(0); i++){
 			for(int j = 0; j < possiblePlaces.GetLength(1); j++){
-				possiblePlaces[i, j] = GetPointInTorus(
+				Vector3 vec = GetPointInTorus(
 					(i * curveAngle * 2f * Mathf.PI / 360f) / possiblePlaces.GetLength(0),
 					(j * 2f * Mathf.PI) / possiblePlaces.GetLength(1),
 					1f
 				);
-				Instantiate(itemSpacer, transform.TransformPoint(possiblePlaces[i, j]), Quaternion.identity, transform);
+				possiblePlaces[i, j] = Instantiate(
+					itemSpacer,
+					transform.TransformPoint(vec),
+					Quaternion.identity,
+					transform
+				);
 			}
 		}
 	}
 
-	public Vector3[,] getSpawnLocations()
+	public GameObject[,] getSpawnLocations()
 	{
 		return possiblePlaces;
 	}
