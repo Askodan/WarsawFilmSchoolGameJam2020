@@ -22,7 +22,7 @@ public class EnergyBarController : MonoBehaviour
     void Update()
     {
         energy = Mathf.Clamp(energy,0.0f,1.0f);
-        scaleChange = new Vector3(energy,1.0f,1.0f);
+        scaleChange = new Vector3(1.0f,energy,1.0f);
         energyBarTransform.localScale = scaleChange;
     }
 }
