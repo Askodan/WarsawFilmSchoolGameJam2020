@@ -20,6 +20,38 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "SetPose1",
+                    "type": "Button",
+                    "id": "cbfad012-2bd1-4c9b-9aae-fba638419ac4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "SetPose2",
+                    "type": "Button",
+                    "id": "c4c471a5-49cc-46cf-a4f7-b30b04b42a11",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "SetPose3",
+                    "type": "Button",
+                    "id": "e035d2cd-675a-4d09-952a-e73e156d23e9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "SetPose4",
+                    "type": "Button",
+                    "id": "0a06f688-2069-45bf-8f2e-62c5de36688f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -154,6 +186,50 @@
                     "action": "ChangePose",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "6f4102c5-2f64-42bc-ab99-a137aa1b546c",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SetPose1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c431c227-d9ed-4469-b5b5-032f68a6146d",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SetPose2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3de94cc8-8094-47f4-880c-3bc7667eb23d",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SetPose3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "971673dd-2da0-4f3c-89d6-20cdda9ea370",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SetPose4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

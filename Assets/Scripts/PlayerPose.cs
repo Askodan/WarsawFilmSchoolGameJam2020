@@ -30,4 +30,25 @@ public class PlayerPose : MonoBehaviour
         anim.SetInteger("Action", currentPose);
         currentPose = (int)Mathf.Repeat(currentPose + change, availablePoses.Length);
     }
+    private void ChangeToPose(int targetPose)
+    {
+        currentPose = (int)Mathf.Repeat(targetPose, availablePoses.Length);
+        anim.SetInteger("Action", currentPose);
+    }
+    private void OnSetPose1()
+    {
+        ChangeToPose(1);
+    }
+    private void OnSetPose2()
+    {
+        ChangeToPose(2);
+    }
+    private void OnSetPose3()
+    {
+        ChangeToPose(3);
+    }
+    private void OnSetPose4()
+    {
+        ChangeToPose(4);
+    }
 }
