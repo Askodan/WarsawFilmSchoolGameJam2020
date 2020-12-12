@@ -46,7 +46,7 @@ public class Pipe : MonoBehaviour {
 		SetVertices();
 		SetTriangles();
 		mesh.RecalculateNormals();
-		if(possiblePlaces == null)
+		if(possiblePlaces != null)
 		{
 			foreach (Transform child in transform) {
 			   GameObject.Destroy(child.gameObject);
@@ -148,7 +148,6 @@ public class Pipe : MonoBehaviour {
 
 	private void generateSpawnPoints()
 	{
-		Debug.Log("Generating item space. This should only take place upon launchtime");
 		possiblePlaces = new Vector3[curveSegmentCount, 10];
 		for(int i = 0; i < possiblePlaces.GetLength(0); i++){
 			for(int j = 0; j < possiblePlaces.GetLength(1); j++){
@@ -157,7 +156,7 @@ public class Pipe : MonoBehaviour {
 					(j * 2f * Mathf.PI) / possiblePlaces.GetLength(1),
 					1f
 				);
-				Instantiate(itemSpacer, possiblePlaces[i, j], Quaternion.identity, transform);
+				Instantiate(itemSpacer, transform.TransformPoint(possiblePlaces[i, j]), Quaternion.identity, transform);
 			}
 		}
 	}
