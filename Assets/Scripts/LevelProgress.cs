@@ -7,9 +7,9 @@ public class LevelProgress : MonoBehaviour
 
     public PipeSystem pipeSystem;
 
-    private float velocity = 9;
-    public float levelLength;
-    public float LevelLength { get { return velocity * levelLength; } }
+    private float velocity;
+    public float levelLength = 1f;
+    public float LevelLength { get { return levelLength; } }
 
     private float startVelocity;
 
@@ -23,7 +23,7 @@ public class LevelProgress : MonoBehaviour
     private Transform world;
 
     public float DistanceTraveled { get => distanceTraveled; }
-
+    public float Progress { get; private set; }
     private void Start()
     {
         startVelocity = velocity;
@@ -50,10 +50,11 @@ public class LevelProgress : MonoBehaviour
 
     private void Update()
     {
+        Progress += Time.deltaTime;
         float velDiff = velocity - startVelocity;
-        if(Mathf.Abs(velDiff) > 0.01f)
+        if (Mathf.Abs(velDiff) > 0.01f)
         {
-          velocity -= velDiff * 0.01f;
+            velocity -= velDiff * 0.01f;
         }
 
         float delta = velocity * Time.deltaTime;
@@ -75,6 +76,11 @@ public class LevelProgress : MonoBehaviour
 
     public void modifySpeed(float amount)
     {
+<<<<<<< HEAD
       velocity = amount;
+=======
+        velocity += amount;
+        velocity = Mathf.Clamp(velocity, 1.0f, 20.0f);
+>>>>>>> 964f6d7149966db99f16a19c1fe5d58e3ee61453
     }
 }

@@ -109,3 +109,5 @@ MonoBehaviour:
   modifiers:
   - what: speed
     amount: 5
+  effect: {fileID: 2258108052063152166, guid: d253ce58671931e458d2a481ad4f0aab, type: 3}
+  destroyTime: 1

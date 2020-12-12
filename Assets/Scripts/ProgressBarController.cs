@@ -19,13 +19,14 @@ public class ProgressBarController : MonoBehaviour
     void Start()
     {
         progressBarTransform = gameObject.GetComponent<RectTransform>();
-        levelProgress = FindObjectOfType<LevelProgress>();
+        if (!levelProgress)
+            levelProgress = FindObjectOfType<LevelProgress>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        progress = levelProgress.DistanceTraveled / levelProgress.LevelLength;
+        progress = levelProgress.Progress / levelProgress.LevelLength;
         //Gdy coś będziemy robić, tutaj trzeba będzie zrobić wypełnianie.
         progress = Mathf.Clamp(progress, 0.0f, 1.0f);
         scaleChange = new Vector3(progress, 1.0f, 1.0f);
