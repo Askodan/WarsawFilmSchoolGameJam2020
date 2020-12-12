@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
   public float energyValue;
   public int moneyValue;
   public float speedValue;
+  private float initialSpeedValue;
 
   public void affect(Modifier[] modifiers)
   {
@@ -44,5 +45,16 @@ public class Player : MonoBehaviour {
     // money.modifyMoney(moneyValue);
     speed = FindObjectOfType<LevelProgress>();
     speed.modifySpeed(speedValue);
+    initialSpeedValue = speedValue;
+  }
+
+  public void Update()
+  {
+    float velDiff = speedValue - initialSpeedValue;
+    if (Mathf.Abs(velDiff) > 0.01f)
+    {
+        speedValue -= velDiff * 0.01f;
+        speed.modifySpeed(speedValue);
+    }
   }
 }
