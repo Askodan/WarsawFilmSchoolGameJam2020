@@ -8,21 +8,21 @@ public class EnergyBarController : MonoBehaviour
     private RectTransform energyBarTransform;
 
     [SerializeField]
-    public float energy = 0.1f;
+    public float energy = 0.5f;
 
     private Vector3 scaleChange;
-    
+
     // Start is called before the first frame update
     void Start()
     {
         energyBarTransform = gameObject.GetComponent<RectTransform>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void modifyEnergy(float modifier)
     {
-        energy = Mathf.Clamp(energy,0.0f,1.0f);
-        scaleChange = new Vector3(energy,1.0f,1.0f);
-        energyBarTransform.localScale = scaleChange;
+      energy += modifier;
+      energy = Mathf.Clamp(energy,0.0f,1.0f);
+      scaleChange = new Vector3(1.0f,energy,1.0f);
+      energyBarTransform.localScale = scaleChange;
     }
 }
