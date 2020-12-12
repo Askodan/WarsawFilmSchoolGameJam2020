@@ -5,13 +5,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerRotation : MonoBehaviour
 {
-    public float rotationSpeed;
-    public float rotationAcceleration;
-    public float rotationDump;
-
+    public float dumpThreshold = 0.1f;
+    public float accelerationPower = 100;
+    public float dumpPower = 50;
+    public float speedLimit = 300;
     private float steering;
     private float currentRotation;
-
+    private float rotationSpeed;
     private void Update()
     {
         CalculateSpeed();
@@ -19,13 +19,14 @@ public class PlayerRotation : MonoBehaviour
     }
     private void CalculateSpeed()
     {
-        if (steering != 0f)
+        if (Mathf.Abs(steering) >= dumpThreshold)
         {
-            rotationSpeed -= steering * rotationAcceleration * Time.deltaTime;
+            rotationSpeed -= steering * accelerationPower * Time.deltaTime;
+            rotationSpeed = Mathf.Clamp(rotationSpeed, -speedLimit, speedLimit);
         }
         else
         {
-            rotationSpeed = Mathf.MoveTowards(rotationSpeed, 0f, rotationDump * Time.deltaTime);
+            rotationSpeed = Mathf.MoveTowards(rotationSpeed, 0f, dumpPower * Time.deltaTime);
         }
     }
     private void UpdateRotation()
