@@ -13,11 +13,13 @@ public class PlayerRotation : MonoBehaviour
     private float steering;
     private float currentRotation;
     private float rotationSpeed;
+
     private void Update()
     {
         CalculateSpeed();
         UpdateRotation();
     }
+
     private void CalculateSpeed()
     {
         if (Mathf.Abs(steering) >= dumpThreshold)
@@ -30,6 +32,7 @@ public class PlayerRotation : MonoBehaviour
             rotationSpeed = Mathf.MoveTowards(rotationSpeed, 0f, dumpPower * Time.deltaTime);
         }
     }
+    
     private void UpdateRotation()
     {
         currentRotation += rotationSpeed * Time.deltaTime;
