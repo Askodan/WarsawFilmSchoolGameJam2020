@@ -95,16 +95,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   availablePoses:
   - name: T-pose
-    takenFields: 
+    takenFields: 00000100000100000100
     visualization: {fileID: 1828417992477257520}
   - name: Skulenie
-    takenFields: 
+    takenFields: 00000000000000000000
     visualization: {fileID: 1828417992477257520}
   - name: Da Vinci
-    takenFields: 
+    takenFields: 00010000010001000001
     visualization: {fileID: 1828417992477257520}
   - name: Wonsz
-    takenFields: 
+    takenFields: 01000000000100000000
     visualization: {fileID: 1828417992477257520}
 --- !u!114 &8918963944461713426
 MonoBehaviour:
