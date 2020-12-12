@@ -7,7 +7,7 @@ public class LevelProgress : MonoBehaviour
 
     public PipeSystem pipeSystem;
 
-    public float velocity;
+    private float velocity = 9;
     public float levelLength;
     public float LevelLength { get { return velocity * levelLength; } }
 
@@ -75,7 +75,6 @@ public class LevelProgress : MonoBehaviour
 
     public void modifySpeed(float amount)
     {
-      velocity += amount;
-      velocity = Mathf.Clamp(velocity, 1.0f, 20.0f);
+      velocity = amount;
     }
 }

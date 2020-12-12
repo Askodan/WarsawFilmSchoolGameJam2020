@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour {
   public GameObject[] itemsToGenerate;
-  public GameObject[] badItemsToGenerate;
   public float skipChance;
+  public GameObject[] badItemsToGenerate;
+  public float badSkipChance;
 
   public Pose[] allowedPositions;
 
@@ -26,9 +27,11 @@ public class ItemSpawner : MonoBehaviour {
         GameObject item;
         if(pose.TakenFields[j])
         {
+          if(skipChance > Random.Range(0, 1.0f))
+            continue;
           item = itemsToGenerate[(int)Random.Range(0, itemsToGenerate.Length)];
         }else{
-          if(skipChance > Random.Range(0, 1.0f))
+          if(badSkipChance > Random.Range(0, 1.0f))
             continue;
           item = badItemsToGenerate[(int)Random.Range(0, badItemsToGenerate.Length)];
         }
