@@ -9,8 +9,10 @@ public class PipeSystem : MonoBehaviour
 	public int pipeCount;
 
 	private Pipe[] pipes;
+  private ItemSpawner itemSpawner;
 
 	private void Awake () {
+    itemSpawner = gameObject.GetComponent<ItemSpawner>();
 		pipes = new Pipe[pipeCount];
 		for (int i = 0; i < pipes.Length; i++) {
 			Pipe pipe = pipes[i] = Instantiate<Pipe>(pipePrefab);
