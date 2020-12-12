@@ -7,15 +7,15 @@ public class ItemSpawner : MonoBehaviour {
 
   public void spawnItems(Pipe pipe){
     Vector3[,] potential_spots = pipe.getSpawnLocations();
-    foreach(GameObject item in itemsToGenerate)
-    {
-      for(int i = 0; i < potential_spots.GetLength(0); i++)
-      {
-        for(int j = 0; j < potential_spots.GetLength(1); j++)
-        {
-          Instantiate(item, potential_spots[i, j], Quaternion.identity, pipe.transform);
-        }
-      }
-    }
+    // foreach(GameObject item in itemsToGenerate)
+    // {
+    //   for(int i = 0; i < potential_spots.GetLength(0); i++)
+    //   {
+    //     for(int j = 0; j < potential_spots.GetLength(1); j++)
+    //     {
+    //       Instantiate(item, potential_spots[i, j], Quaternion.identity, pipe.transform);
+    //     }
+    //   }
+    // }
   }
 }

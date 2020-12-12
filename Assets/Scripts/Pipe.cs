@@ -45,8 +45,14 @@ public class Pipe : MonoBehaviour {
 		mesh.Clear();
 		SetVertices();
 		SetTriangles();
-		generateSpawnPoints();
 		mesh.RecalculateNormals();
+		if(possiblePlaces == null)
+		{
+			foreach (Transform child in transform) {
+			   GameObject.Destroy(child.gameObject);
+			}
+		}
+		generateSpawnPoints();
 	}
 
 	private Vector3 GetPointOnTorus (float u, float v) {
@@ -85,9 +91,9 @@ public class Pipe : MonoBehaviour {
 		transform.Translate(0f, -curveRadius, 0f);
 		transform.SetParent(pipe.transform.parent);
 		transform.localScale = Vector3.one;
-		foreach (Transform child in transform) {
-		   GameObject.Destroy(child.gameObject);
-		}
+		// foreach (Transform child in transform) {
+		//    GameObject.Destroy(child.gameObject);
+		// }
 	}
 
 	private void SetVertices () {
@@ -142,6 +148,7 @@ public class Pipe : MonoBehaviour {
 
 	private void generateSpawnPoints()
 	{
+		Debug.Log("Generating item space. This should only take place upon launchtime");
 		possiblePlaces = new Vector3[curveSegmentCount, 10];
 		for(int i = 0; i < possiblePlaces.GetLength(0); i++){
 			for(int j = 0; j < possiblePlaces.GetLength(1); j++){
