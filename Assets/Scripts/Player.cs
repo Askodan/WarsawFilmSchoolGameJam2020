@@ -15,8 +15,6 @@ public class Player : MonoBehaviour {
 	private float systemRotation;
   private float worldRotation, avatarRotation;
 
-  public float rotationVelocity;
-
   private Transform world, rotater;
 
   private void Start () {
@@ -28,7 +26,7 @@ public class Player : MonoBehaviour {
 
   private void SetupCurrentPipe () {
 		deltaToRotation = 360f / (2f * Mathf.PI * currentPipe.curveRadius);
-		worldRotation += currentPipe.RelativeRotation;
+		worldRotation += currentPipe.relativeRotation;
 		if (worldRotation < 0f) {
 			worldRotation += 360f;
 		}
@@ -53,17 +51,5 @@ public class Player : MonoBehaviour {
 
 		pipeSystem.transform.localRotation =
 			Quaternion.Euler(0f, 0f, systemRotation);
-	}
-
-  private void UpdateAvatarRotation () {
-		avatarRotation +=
-			rotationVelocity * Time.deltaTime * Input.GetAxis("Horizontal");
-		if (avatarRotation < 0f) {
-			avatarRotation += 360f;
-		}
-		else if (avatarRotation >= 360f) {
-			avatarRotation -= 360f;
-		}
-		rotater.localRotation = Quaternion.Euler(avatarRotation, 0f, 0f);
 	}
 }

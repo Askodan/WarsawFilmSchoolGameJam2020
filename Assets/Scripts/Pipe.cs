@@ -24,9 +24,7 @@ public class Pipe : MonoBehaviour {
 		private set;
 	}
 
-	private float relativeRotation;
-
-	public float RelativeRotation {
+	public float relativeRotation {
 		get;
 		private set;
 	}
@@ -62,7 +60,7 @@ public class Pipe : MonoBehaviour {
 	//
 	// 	for (int u = 0; u < curveSegmentCount; u++) {
 	// 		for (int v = 0; v < pipeSegmentCount; v++) {
-	// 			Vector3 point = GetPointOnTorus(u * uStep, v * vStep);
+	// 			Vector3 point = GetPointInTorus(u * uStep, v * vStep, -1);
 	// 			Gizmos.color = new Color(
 	// 				1f,
 	// 				(float)v / pipeSegmentCount,
@@ -133,6 +131,31 @@ public class Pipe : MonoBehaviour {
 			triangles[t + 5] = i + 3;
 		}
 		mesh.triangles = triangles;
+	}
+
+	public Vector3[,] getSpawnLocations()
+	{
+			float uStep = (2f * Mathf.PI) / curveSegmentCount;
+			float vStep = (2f * Mathf.PI) / pipeSegmentCount;
+
+			Vector3[,] output = new Vector3[pipeSegmentCount, curveSegmentCount];
+
+			for (int u = 0; u < curveSegmentCount; u++) {
+				for (int v = 0; v < pipeSegmentCount; v++) {
+					Vector3 point = GetPointOnTorus(u * uStep, v * vStep);
+					output[v, u] = point;
+				}
+			}
+			return output;
+	}
+
+	private Vector3 GetPointInTorus (float u, float v, float below_surface) {
+		Vector3 p;
+		float r = (curveRadius + (pipeRadius - below_surface) * Mathf.Cos(v));
+		p.x = r * Mathf.Sin(u);
+		p.y = r * Mathf.Cos(u);
+		p.z = pipeRadius * Mathf.Sin(v);
+		return p;
 	}
 
 }
