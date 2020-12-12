@@ -5,11 +5,14 @@ using UnityEngine;
 public class ItemSpawner : MonoBehaviour {
   public GameObject[] itemsToGenerate;
 
+  public bool[,] allowedPositions;
+
   public void spawnItems(Pipe pipe){
     GameObject[,] potential_spots = pipe.getSpawnLocations();
 
     for(int i = 0; i < potential_spots.GetLength(0); i++)
     {
+      int profile = (int)Random.Range(0, itemsToGenerate.Length);
       for(int j = 0; j < potential_spots.GetLength(1); j++)
       {
         GameObject item = itemsToGenerate[(int)Random.Range(0, itemsToGenerate.Length)];
@@ -18,7 +21,7 @@ public class ItemSpawner : MonoBehaviour {
           potential_spots[i, j].transform.position,
           Quaternion.identity,
           pipe.transform
-          );
+        );
       }
     }
   }
