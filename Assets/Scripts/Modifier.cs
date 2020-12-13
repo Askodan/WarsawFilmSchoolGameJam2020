@@ -6,8 +6,13 @@ using UnityEngine;
 [System.Serializable]
 public class Modifier
 {
-  [SerializeField]
-  public string what;
-  [SerializeField]
-  public float amount;
+    [SerializeField]
+    public string what;
+    [SerializeField]
+    public float amount;
+    public Modifier(string w, float a)
+    {
+        what = w;
+        amount = a;
+    }
 }

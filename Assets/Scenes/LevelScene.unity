@@ -287,6 +287,11 @@ PrefabInstance:
       propertyPath: sh
       value: 
       objectReference: {fileID: 1892086906}
+    - target: {fileID: 383373723241978571, guid: 8b3d9db1bcc3e1f47bb40ee74c7bf801,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1892086907}
     - target: {fileID: 997127332812181447, guid: 8b3d9db1bcc3e1f47bb40ee74c7bf801,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1183,6 +1188,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37c483d5aa72ba610aa9e415332f3aa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1892086907 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -6363135214645844184, guid: 6076fb13efc506de8b71acd1e19120a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1892086905}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd5bd6b8b6eafac3da3446caf380fd9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &6543456425075477700

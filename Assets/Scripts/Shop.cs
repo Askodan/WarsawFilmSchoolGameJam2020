@@ -16,11 +16,12 @@ class SkillCost
         priceTag.text = price.ToString();
         sellBut.interactable = true;
     }
-    public bool Sell(MoneyController mc)
+    public bool Sell(Player player)
     {
-        if (mc.money >= price)
+        if (player.moneyValue >= price)
         {
-            mc.modifyMoney(mc.money - price);
+            Modifier[] mod = { new Modifier("money", -price) };
+            player.affect(mod);
             priceTag.text = "-";
             sellBut.interactable = false;
             return true;
@@ -37,7 +38,7 @@ public class Shop : MonoBehaviour
     [SerializeField]
     SkillCost priceWings;
     [SerializeField]
-    MoneyController mc;
+    Player player;
     [SerializeField]
     SkillHandler sh;
     void Awake()
@@ -48,17 +49,17 @@ public class Shop : MonoBehaviour
     }
     public void BuyArms()
     {
-        if (priceArms.Sell(mc))
+        if (priceArms.Sell(player))
             sh.buyArmSkill();
     }
     public void BuyLegs()
     {
-        if (priceLegs.Sell(mc))
+        if (priceLegs.Sell(player))
             sh.buyLegSkill();
     }
     public void BuyWings()
     {
-        if (priceWings.Sell(mc))
+        if (priceWings.Sell(player))
             sh.buyWingSkill();
     }
 }
