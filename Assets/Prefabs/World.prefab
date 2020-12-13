@@ -94,8 +94,8 @@ MonoBehaviour:
   itemsToGenerate:
   - {fileID: 5642510051800576905, guid: 78be6f2c8bd81e7d6894d82fca9e0f4f, type: 3}
   - {fileID: 2419280272933240249, guid: e688a87367c0d0b0fb9877a0e20d1fc5, type: 3}
-  skipChance: 0.6
+  skipChance: 0.3
   badItemsToGenerate:
   - {fileID: 1074742296955887081, guid: f474a5f236a66387ca38710a63ca103e, type: 3}
-  badSkipChance: 0.4
+  badSkipChance: 0.8
   allowedPositions: []

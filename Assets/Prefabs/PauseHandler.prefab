@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2424024458360481697}
   - component: {fileID: 3859274795084492107}
   - component: {fileID: 3194911085842965232}
+  - component: {fileID: 161366337397359946}
   m_Layer: 0
   m_Name: PauseHandler
   m_TagString: Untagged
@@ -75,3 +76,29 @@ MonoBehaviour:
   m_DefaultActionMap: Steering
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &161366337397359946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954054970923249623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65d93b9842cda08418cb20577f6f40af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priceArms:
+    price: 5
+    priceTag: {fileID: 0}
+    sellBut: {fileID: 0}
+  priceLegs:
+    price: 10
+    priceTag: {fileID: 0}
+    sellBut: {fileID: 0}
+  priceWings:
+    price: 15
+    priceTag: {fileID: 0}
+    sellBut: {fileID: 0}
+  mc: {fileID: 0}
+  sh: {fileID: 0}

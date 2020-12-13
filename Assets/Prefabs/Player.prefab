@@ -811,7 +811,7 @@ MonoBehaviour:
   bumpedAccelerationPower: 1000
   normalDumpPower: 250
   bumpedDumpPower: 500
-  speedLimit: 500
+  speedLimit: 300
 --- !u!114 &8918963944461713423
 MonoBehaviour:
   m_ObjectHideFlags: 0
