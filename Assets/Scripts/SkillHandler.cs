@@ -13,6 +13,14 @@ public class SkillHandler : MonoBehaviour {
 
   private float activeCounter;
 
+  private string armLastStatus = "locked";
+  private string legLastStatus = "locked";
+  private string wingLastStatus = "locked";
+
+  public string armStatus = "locked";
+  public string legStatus = "locked";
+  public string wingStatus = "locked";
+
   public void Start()
   {
     prot = FindObjectOfType<PlayerRotation>();
@@ -30,12 +38,39 @@ public class SkillHandler : MonoBehaviour {
         disableSkills();
       }
     }
+    if(pc.skillBlockTimer > 0)
+    {
+      if(armStatus != "locked")
+        armStatus = "blocked";
+      if(legStatus != "locked")
+        legStatus = "blocked";
+      if(wingStatus != "locked")
+        wingStatus = "blocked";
+    }
+    if(armLastStatus != armStatus)
+    {
+      //TODO: call UI
+    }
+    if(legLastStatus != legStatus)
+    {
+      //TODO: call UI
+    }
+    if(wingLastStatus != wingStatus)
+    {
+      //TODO: call UI
+    }
   }
 
   private void disableSkills()
   {
     prot.debumpDumpPower();
     prot.debumpAcceleration();
+    if(pc.skillBlockTimer <= 0)
+    {
+      armStatus = "inactive";
+      legStatus = "inactive";
+      wingStatus = "inactive";
+    }
     //TODO: Disable particle systems
     //TODO: Refresh icons
   }
@@ -44,6 +79,7 @@ public class SkillHandler : MonoBehaviour {
   {
     pclimbs.HandRight.ChangeLimb(true);
     pclimbs.HandLeft.ChangeLimb(true);
+    armStatus = "inactive";
     //TODO: Ungrey icons
   }
 
@@ -51,6 +87,7 @@ public class SkillHandler : MonoBehaviour {
   {
     pclimbs.LegRight.ChangeLimb(true);
     pclimbs.LegLeft.ChangeLimb(true);
+    legStatus = "inactive";
     //TODO: Ungrey icons
   }
 
@@ -58,6 +95,7 @@ public class SkillHandler : MonoBehaviour {
   {
     pclimbs.WingRight.ChangeLimb(true);
     pclimbs.WingLeft.ChangeLimb(true);
+    wingStatus = "inactive";
     //TODO: Ungrey icons
   }
 
@@ -71,6 +109,9 @@ public class SkillHandler : MonoBehaviour {
     //TODO: Activate particle system
     //TODO: Enabled form of icon
     activeCounter = skillTime[2];
+    armStatus = "active";
+    legStatus = "inactive";
+    wingStatus = "inactive";
   }
 
   public void OnLegSkill()
@@ -83,6 +124,9 @@ public class SkillHandler : MonoBehaviour {
     //TODO: Activate particle system
     //TODO: Enabled form of icon
     activeCounter = skillTime[1];
+    armStatus = "inactive";
+    legStatus = "active";
+    wingStatus = "inactive";
   }
 
   public void OnWingSkill()
@@ -95,5 +139,8 @@ public class SkillHandler : MonoBehaviour {
     //TODO: Activate particle system
     //TODO: Enabled form of icon
     activeCounter = skillTime[0];
+    armStatus = "inactive";
+    legStatus = "inactive";
+    wingStatus = "active";
   }
 }
