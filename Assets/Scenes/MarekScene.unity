@@ -1085,9 +1085,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsToGenerate:
   - {fileID: 2419280272933240249, guid: e688a87367c0d0b0fb9877a0e20d1fc5, type: 3}
-  - {fileID: 4123461404104738163, guid: 6a9cac1217e7eeadbb280ce007bcc9c8, type: 3}
   - {fileID: 5642510051800576905, guid: 78be6f2c8bd81e7d6894d82fca9e0f4f, type: 3}
-  - {fileID: 2897167962516086383, guid: 6947cbe162f9489f38cdb1f1e08a4ef6, type: 3}
+  - {fileID: 5642510051800576905, guid: 78be6f2c8bd81e7d6894d82fca9e0f4f, type: 3}
+  - {fileID: 2419280272933240249, guid: e688a87367c0d0b0fb9877a0e20d1fc5, type: 3}
   skipChance: 0.2
   badItemsToGenerate:
   - {fileID: 1074742296955887081, guid: f474a5f236a66387ca38710a63ca103e, type: 3}

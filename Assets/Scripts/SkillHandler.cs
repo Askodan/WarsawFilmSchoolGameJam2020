@@ -37,24 +37,28 @@ public class SkillHandler : MonoBehaviour {
     prot.debumpDumpPower();
     prot.debumpAcceleration();
     //TODO: Disable particle systems
+    //TODO: Refresh icons
   }
 
   public void buyArmSkill()
   {
     pclimbs.HandRight.ChangeLimb(true);
     pclimbs.HandLeft.ChangeLimb(true);
+    //TODO: Ungrey icons
   }
 
   public void buyLegSkill()
   {
     pclimbs.LegRight.ChangeLimb(true);
     pclimbs.LegLeft.ChangeLimb(true);
+    //TODO: Ungrey icons
   }
 
   public void buyWingSkill()
   {
     pclimbs.WingRight.ChangeLimb(true);
     pclimbs.WingLeft.ChangeLimb(true);
+    //TODO: Ungrey icons
   }
 
   public void OnArmSkill()
@@ -65,6 +69,7 @@ public class SkillHandler : MonoBehaviour {
       return;
     prot.bumpAcceleration();
     //TODO: Activate particle system
+    //TODO: Enabled form of icon
     activeCounter = skillTime[2];
   }
 
@@ -76,6 +81,7 @@ public class SkillHandler : MonoBehaviour {
       return;
     pc.bumpSpeed();
     //TODO: Activate particle system
+    //TODO: Enabled form of icon
     activeCounter = skillTime[1];
   }
 
@@ -87,6 +93,7 @@ public class SkillHandler : MonoBehaviour {
       return;
     prot.bumpDumpPower();
     //TODO: Activate particle system
+    //TODO: Enabled form of icon
     activeCounter = skillTime[0];
   }
 }
