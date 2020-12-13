@@ -8,9 +8,10 @@ public class Limb
 {
     public GameObject cyber;
     public SpriteRenderer original;
+    public SkillEffect effect;
     public void Load()
     {
-      ChangeLimb(false);
+        ChangeLimb(false);
     }
     public void ChangeLimb(bool ifcyber)
     {

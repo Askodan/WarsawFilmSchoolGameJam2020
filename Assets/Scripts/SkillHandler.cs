@@ -3,97 +3,143 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+class Counter
+{
+    private float counter;
+    private bool active;
 
-public class SkillHandler : MonoBehaviour {
-  public float[] skillTime;
-  public float[] skillCost;
-  private PlayerRotation prot;
-  private PlayerChangeLimbs pclimbs;
-  private Player pc;
-
-  private float activeCounter;
-
-  public void Start()
-  {
-    prot = FindObjectOfType<PlayerRotation>();
-    pclimbs = FindObjectOfType<PlayerChangeLimbs>();
-    pc = FindObjectOfType<Player>();
-  }
-
-  public void Update()
-  {
-    if (activeCounter > 0)
+    public bool Active { get => active; private set => active = value; }
+    public bool Used { get; set; } = false;
+    public void Activate(float val)
     {
-      activeCounter -= Time.deltaTime;
-      if (activeCounter <= 0)
-      {
-        disableSkills();
-      }
+        counter = val;
+        active = true;
     }
-  }
+    public void Update(float diff)
+    {
+        if (counter > 0)
+        {
+            counter -= diff;
+            if (counter <= 0)
+            {
+                Active = false;
+                Used = false;
+            }
+        }
+    }
+}
+public class SkillHandler : MonoBehaviour
+{
+    public float[] skillTime;
+    public float[] skillCost;
+    private PlayerRotation prot;
+    private PlayerChangeLimbs pclimbs;
+    private Player pc;
 
-  private void disableSkills()
-  {
-    prot.debumpDumpPower();
-    prot.debumpAcceleration();
-    //TODO: Disable particle systems
-    //TODO: Refresh icons
-  }
+    private Counter activeCounterHands;
+    private Counter activeCounterLegs;
+    private Counter activeCounterWings;
 
-  public void buyArmSkill()
-  {
-    pclimbs.HandRight.ChangeLimb(true);
-    pclimbs.HandLeft.ChangeLimb(true);
-    //TODO: Ungrey icons
-  }
+    public void Start()
+    {
+        prot = FindObjectOfType<PlayerRotation>();
+        pclimbs = FindObjectOfType<PlayerChangeLimbs>();
+        pc = FindObjectOfType<Player>();
+    }
 
-  public void buyLegSkill()
-  {
-    pclimbs.LegRight.ChangeLimb(true);
-    pclimbs.LegLeft.ChangeLimb(true);
-    //TODO: Ungrey icons
-  }
+    public void Update()
+    {
+        activeCounterHands.Update(Time.deltaTime);
+        activeCounterLegs.Update(Time.deltaTime);
+        activeCounterWings.Update(Time.deltaTime);
 
-  public void buyWingSkill()
-  {
-    pclimbs.WingRight.ChangeLimb(true);
-    pclimbs.WingLeft.ChangeLimb(true);
-    //TODO: Ungrey icons
-  }
+        if (!activeCounterHands.Used)
+        {
+            prot.debumpAcceleration();
+            pclimbs.HandRight.effect.Deactivate();
+            pclimbs.HandLeft.effect.Deactivate();
+            activeCounterHands.Used = true;
+        }
+        if (!activeCounterLegs.Used)
+        {
+            pclimbs.LegRight.effect.Deactivate();
+            pclimbs.LegLeft.effect.Deactivate();
+            activeCounterLegs.Used = true;
+        }
+        if (!activeCounterWings.Used)
+        {
+            pclimbs.WingRight.effect.Deactivate();
+            pclimbs.WingLeft.effect.Deactivate();
+            prot.debumpDumpPower();
+            activeCounterWings.Used = true;
+        }
+    }
 
-  public void OnArmSkill()
-  {
-    if(activeCounter > 0)
-      return;
-    if(!pc.energyDrain(skillCost[2]))
-      return;
-    prot.bumpAcceleration();
-    //TODO: Activate particle system
-    //TODO: Enabled form of icon
-    activeCounter = skillTime[2];
-  }
+    private void disableSkills()
+    {
+        prot.debumpDumpPower();
+        prot.debumpAcceleration();
+        //TODO: Disable particle systems
+        //TODO: Refresh icons
+    }
 
-  public void OnLegSkill()
-  {
-    if(activeCounter > 0)
-      return;
-    if(!pc.energyDrain(skillCost[1]))
-      return;
-    pc.bumpSpeed();
-    //TODO: Activate particle system
-    //TODO: Enabled form of icon
-    activeCounter = skillTime[1];
-  }
+    public void buyArmSkill()
+    {
+        pclimbs.HandRight.ChangeLimb(true);
+        pclimbs.HandLeft.ChangeLimb(true);
+        //TODO: Ungrey icons
+    }
 
-  public void OnWingSkill()
-  {
-    if(activeCounter > 0)
-      return;
-    if(!pc.energyDrain(skillCost[0]))
-      return;
-    prot.bumpDumpPower();
-    //TODO: Activate particle system
-    //TODO: Enabled form of icon
-    activeCounter = skillTime[0];
-  }
+    public void buyLegSkill()
+    {
+        pclimbs.LegRight.ChangeLimb(true);
+        pclimbs.LegLeft.ChangeLimb(true);
+        //TODO: Ungrey icons
+    }
+
+    public void buyWingSkill()
+    {
+        pclimbs.WingRight.ChangeLimb(true);
+        pclimbs.WingLeft.ChangeLimb(true);
+        //TODO: Ungrey icons
+    }
+
+    public void OnArmSkill()
+    {
+        if (activeCounterHands.Active)
+            return;
+        if (!pc.energyDrain(skillCost[2]))
+            return;
+        prot.bumpAcceleration();
+        pclimbs.HandRight.effect.Activate();
+        pclimbs.HandLeft.effect.Activate();
+        //TODO: Enabled form of icon
+        activeCounterHands.Activate(skillTime[2]);
+    }
+
+    public void OnLegSkill()
+    {
+        if (activeCounterLegs.Active)
+            return;
+        if (!pc.energyDrain(skillCost[1]))
+            return;
+        pc.bumpSpeed();
+        pclimbs.LegRight.effect.Activate();
+        pclimbs.LegLeft.effect.Activate();
+        //TODO: Enabled form of icon
+        activeCounterLegs.Activate(skillTime[1]);
+    }
+
+    public void OnWingSkill()
+    {
+        if (activeCounterWings.Active)
+            return;
+        if (!pc.energyDrain(skillCost[0]))
+            return;
+        prot.bumpDumpPower();
+        pclimbs.WingRight.effect.Activate();
+        pclimbs.WingLeft.effect.Activate();
+        //TODO: Enabled form of icon
+        activeCounterWings.Activate(skillTime[0]);
+    }
 }
