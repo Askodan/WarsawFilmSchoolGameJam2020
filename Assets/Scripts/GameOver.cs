@@ -28,5 +28,6 @@ public class GameOver : MonoBehaviour
     {
         screen.SetActive(true);
         result.text = skillHandler.hasAllSkills() ? "Zwycięstwo" : "Porażka";
+        Time.timeScale = 0f;
     }
 }
