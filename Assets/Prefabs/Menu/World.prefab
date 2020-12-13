@@ -93,8 +93,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsToGenerate:
   - {fileID: 5777795757349116184, guid: 8165c12bacd85d8489905ad7da8d375d, type: 3}
-  - {fileID: 5777795757349116184, guid: 8165c12bacd85d8489905ad7da8d375d, type: 3}
-  - {fileID: 5777795757349116184, guid: 8165c12bacd85d8489905ad7da8d375d, type: 3}
+  - {fileID: 1707229723107152531, guid: bc193ff50fee6354490739b18de93135, type: 3}
+  - {fileID: 6036190905436353416, guid: c0c2fce99792d334d8db0a044ba24fad, type: 3}
   skipChance: 0
   badItemsToGenerate: []
   badSkipChance: 0
