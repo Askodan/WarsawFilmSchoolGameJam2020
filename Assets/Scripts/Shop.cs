@@ -21,7 +21,7 @@ class SkillCost
         if (mc.money >= price)
         {
             mc.modifyMoney(mc.money - price);
-            priceTag.text = "Sprzedane";
+            priceTag.text = "-";
             sellBut.interactable = false;
             return true;
         }
