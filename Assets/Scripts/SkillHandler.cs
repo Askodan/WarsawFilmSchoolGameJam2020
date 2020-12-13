@@ -36,9 +36,9 @@ public class SkillHandler : MonoBehaviour
     private PlayerChangeLimbs pclimbs;
     private Player pc;
 
-    private Counter activeCounterHands;
-    private Counter activeCounterLegs;
-    private Counter activeCounterWings;
+    private Counter activeCounterHands = new Counter();
+    private Counter activeCounterLegs = new Counter();
+    private Counter activeCounterWings = new Counter();
 
     public void Start()
     {
