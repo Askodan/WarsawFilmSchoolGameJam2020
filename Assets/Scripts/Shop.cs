@@ -14,7 +14,7 @@ class SkillCost
     public void Init()
     {
         priceTag.text = price.ToString();
-        sellBut.enabled = true;
+        sellBut.interactable = true;
     }
     public bool Sell(MoneyController mc)
     {
@@ -22,7 +22,7 @@ class SkillCost
         {
             mc.money -= price;
             priceTag.text = "Sprzedane";
-            sellBut.enabled = false;
+            sellBut.interactable = false;
             return true;
         }
         return false;

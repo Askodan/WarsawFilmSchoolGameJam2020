@@ -623,7 +623,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1582466046525065732}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: BuyLegs
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5656741064639305145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -873,7 +884,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5842792037075017896}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: BuyWings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8477631027323671929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1270,6 +1292,7 @@ GameObject:
   - component: {fileID: 4429877631388736214}
   - component: {fileID: 6714656621784039250}
   - component: {fileID: 5120390315861195904}
+  - component: {fileID: 1190282390}
   m_Layer: 5
   m_Name: Money
   m_TagString: Untagged
@@ -1337,6 +1360,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Hajsy!
+--- !u!114 &1190282390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4223199885892529453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b47b58d733e941c45a1efbac810f3858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money: 0
+  moneySymbol: 0
 --- !u!1 &4978573025100434764
 GameObject:
   m_ObjectHideFlags: 0
@@ -1470,6 +1507,68 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &5360948309276580310
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 960886300720918281}
+  - component: {fileID: 383373723241978571}
+  m_Layer: 5
+  m_Name: Shop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &960886300720918281
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5360948309276580310}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5836834336758448178}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &383373723241978571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5360948309276580310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65d93b9842cda08418cb20577f6f40af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priceArms:
+    price: 5
+    priceTag: {fileID: 2706826540473460784}
+    sellBut: {fileID: 8694602822499884665}
+  priceLegs:
+    price: 10
+    priceTag: {fileID: 4464731980918418970}
+    sellBut: {fileID: 3267712114603633905}
+  priceWings:
+    price: 15
+    priceTag: {fileID: 3721209926129196014}
+    sellBut: {fileID: 5323055899442458631}
+  mc: {fileID: 1190282390}
+  sh: {fileID: 0}
 --- !u!1 &5703294618415988872
 GameObject:
   m_ObjectHideFlags: 0
@@ -1537,6 +1636,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 5836834336828381219}
+  - {fileID: 960886300720918281}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2991,7 +3091,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 118705569160518915}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: BuyArms
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6264417074842154424
 MonoBehaviour:
   m_ObjectHideFlags: 0
