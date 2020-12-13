@@ -36,12 +36,25 @@ public class SkillHandler : MonoBehaviour {
   {
     prot.debumpDumpPower();
     prot.debumpAcceleration();
-    pclimbs.HandRight.ChangeLimb(false);
-    pclimbs.HandLeft.ChangeLimb(false);
-    pclimbs.LegRight.ChangeLimb(false);
-    pclimbs.LegLeft.ChangeLimb(false);
-    pclimbs.WingRight.ChangeLimb(false);
-    pclimbs.WingLeft.ChangeLimb(false);
+    //TODO: Disable particle systems
+  }
+
+  public void buyArmSkill()
+  {
+    pclimbs.HandRight.ChangeLimb(true);
+    pclimbs.HandLeft.ChangeLimb(true);
+  }
+
+  public void buyLegSkill()
+  {
+    pclimbs.LegRight.ChangeLimb(true);
+    pclimbs.LegLeft.ChangeLimb(true);
+  }
+
+  public void buyWingSkill()
+  {
+    pclimbs.WingRight.ChangeLimb(true);
+    pclimbs.WingLeft.ChangeLimb(true);
   }
 
   public void OnArmSkill()
@@ -51,8 +64,7 @@ public class SkillHandler : MonoBehaviour {
     if(!pc.energyDrain(skillCost[2]))
       return;
     prot.bumpAcceleration();
-    pclimbs.HandRight.ChangeLimb(true);
-    pclimbs.HandLeft.ChangeLimb(true);
+    //TODO: Activate particle system
     activeCounter = skillTime[2];
   }
 
@@ -63,8 +75,7 @@ public class SkillHandler : MonoBehaviour {
     if(!pc.energyDrain(skillCost[1]))
       return;
     pc.bumpSpeed();
-    pclimbs.LegRight.ChangeLimb(true);
-    pclimbs.LegLeft.ChangeLimb(true);
+    //TODO: Activate particle system
     activeCounter = skillTime[1];
   }
 
@@ -75,8 +86,7 @@ public class SkillHandler : MonoBehaviour {
     if(!pc.energyDrain(skillCost[0]))
       return;
     prot.bumpDumpPower();
-    pclimbs.WingRight.ChangeLimb(true);
-    pclimbs.WingLeft.ChangeLimb(true);
+    //TODO: Activate particle system
     activeCounter = skillTime[0];
   }
 }

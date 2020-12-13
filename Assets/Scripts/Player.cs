@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
   private EnergyBarController energy;
-  private MoneyController money;
+  // private MoneyController money;
   private LevelProgress speed;
 
   public float energyValue;
@@ -28,9 +28,9 @@ public class Player : MonoBehaviour {
           energy.modifyEnergy(energyValue);
           break;
         case "money":
-          moneyValue += (int)m.amount;
-          moneyValue = Mathf.Clamp(moneyValue, 0, 1000);
-          money.modifyMoney(moneyValue);
+          // moneyValue += (int)m.amount;
+          // moneyValue = Mathf.Clamp(moneyValue, 0.0f, 1000.0f);
+          // money.modifyMoney(moneyValue);
           break;
         case "speed":
           speedValue += m.amount;
@@ -48,8 +48,8 @@ public class Player : MonoBehaviour {
   {
     energy = FindObjectOfType<EnergyBarController>();
     energy.modifyEnergy(energyValue);
-    money =  FindObjectOfType<MoneyController>();
-    money.modifyMoney(moneyValue);
+    // money =  FindObjectOfType<MoneyController>();
+    // money.modifyMoney(moneyValue);
     speed = FindObjectOfType<LevelProgress>();
     speed.modifySpeed(speedValue);
     initialSpeedValue = speedValue;
