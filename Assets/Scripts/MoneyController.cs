@@ -16,7 +16,9 @@ public class MoneyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        money = 0;
         moneyDisplay = gameObject.GetComponent<Text>();
+        modifyMoney(0);
     }
 
     public void modifyMoney(int modifier)
