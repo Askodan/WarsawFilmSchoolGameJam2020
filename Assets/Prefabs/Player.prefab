@@ -1135,9 +1135,9 @@ MonoBehaviour:
   - 5
   - 5
   skillCost:
-  - 0.0334
-  - 0.0334
-  - 0.0334
+  - 0.1
+  - 0.1
+  - 0.1
 --- !u!1001 &1196783765669635666
 PrefabInstance:
   m_ObjectHideFlags: 0
