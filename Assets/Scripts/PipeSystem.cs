@@ -4,28 +4,31 @@ using UnityEngine;
 
 public class PipeSystem : MonoBehaviour
 {
-  public Pipe pipePrefab;
-  public int spawn_at = 4;
+    public Pipe pipePrefab;
+    public int spawn_at = 4;
 
     public int pipeCount;
 
 
-	private Pipe[] pipes;
-  private ItemSpawner itemSpawner;
+    private Pipe[] pipes;
+    private ItemSpawner itemSpawner;
 
-	private void Awake () {
-    itemSpawner = gameObject.GetComponent<ItemSpawner>();
-		pipes = new Pipe[pipeCount];
-		for (int i = 0; i < pipes.Length; i++) {
-			Pipe pipe = pipes[i] = Instantiate<Pipe>(pipePrefab);
-			pipe.transform.SetParent(transform, false);
-      pipe.Generate();
-      if (i > 0) {
-				pipe.AlignWith(pipes[i - 1]);
-			}
-		}
-    AlignNextPipeWithOrigin();
-	}
+    private void Awake()
+    {
+        itemSpawner = gameObject.GetComponent<ItemSpawner>();
+        pipes = new Pipe[pipeCount];
+        for (int i = 0; i < pipes.Length; i++)
+        {
+            Pipe pipe = pipes[i] = Instantiate<Pipe>(pipePrefab);
+            pipe.transform.SetParent(transform, false);
+            pipe.Generate();
+            if (i > 0)
+            {
+                pipe.AlignWith(pipes[i - 1]);
+            }
+        }
+        AlignNextPipeWithOrigin();
+    }
 
     public Pipe SetupFirstPipe()
     {
@@ -40,7 +43,7 @@ public class PipeSystem : MonoBehaviour
         pipes[pipes.Length - 1].Generate();
         pipes[pipes.Length - 1].AlignWith(pipes[pipes.Length - 2]);
         transform.localPosition = new Vector3(0f, -pipes[1].curveRadius);
-        itemSpawner.spawnItems(pipes[spawn_at]);
+        itemSpawner?.spawnItems(pipes[spawn_at]);
         return pipes[1];
     }
 
