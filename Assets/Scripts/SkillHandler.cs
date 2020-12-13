@@ -110,8 +110,8 @@ public class SkillHandler : MonoBehaviour {
     //TODO: Enabled form of icon
     activeCounter = skillTime[2];
     armStatus = "active";
-    legStatus = "inactive";
-    wingStatus = "inactive";
+    legStatus = "disabled";
+    wingStatus = "disabled";
   }
 
   public void OnLegSkill()
@@ -124,9 +124,9 @@ public class SkillHandler : MonoBehaviour {
     //TODO: Activate particle system
     //TODO: Enabled form of icon
     activeCounter = skillTime[1];
-    armStatus = "inactive";
+    armStatus = "disabled";
     legStatus = "active";
-    wingStatus = "inactive";
+    wingStatus = "disabled";
   }
 
   public void OnWingSkill()
@@ -139,8 +139,8 @@ public class SkillHandler : MonoBehaviour {
     //TODO: Activate particle system
     //TODO: Enabled form of icon
     activeCounter = skillTime[0];
-    armStatus = "inactive";
-    legStatus = "inactive";
+    armStatus = "disabled";
+    legStatus = "disabled";
     wingStatus = "active";
   }
 }
