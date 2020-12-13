@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 class Counter
 {
+    public bool Bought { get; set; } = false;
+
     private float counter;
     private bool active;
 
@@ -87,6 +89,7 @@ public class SkillHandler : MonoBehaviour
     {
         pclimbs.HandRight.ChangeLimb(true);
         pclimbs.HandLeft.ChangeLimb(true);
+        activeCounterHands.Bought = true;
         //TODO: Ungrey icons
     }
 
@@ -94,6 +97,7 @@ public class SkillHandler : MonoBehaviour
     {
         pclimbs.LegRight.ChangeLimb(true);
         pclimbs.LegLeft.ChangeLimb(true);
+        activeCounterLegs.Bought = true;
         //TODO: Ungrey icons
     }
 
@@ -101,15 +105,17 @@ public class SkillHandler : MonoBehaviour
     {
         pclimbs.WingRight.ChangeLimb(true);
         pclimbs.WingLeft.ChangeLimb(true);
+        activeCounterWings.Bought = true;
         //TODO: Ungrey icons
     }
 
     public void OnArmSkill()
     {
-        if (activeCounterHands.Active)
+        if (activeCounterHands.Active || !activeCounterHands.Bought)
             return;
         if (!pc.energyDrain(skillCost[2]))
             return;
+
         prot.bumpAcceleration();
         pclimbs.HandRight.effect.Activate();
         pclimbs.HandLeft.effect.Activate();
@@ -119,7 +125,7 @@ public class SkillHandler : MonoBehaviour
 
     public void OnLegSkill()
     {
-        if (activeCounterLegs.Active)
+        if (activeCounterLegs.Active || !activeCounterLegs.Bought)
             return;
         if (!pc.energyDrain(skillCost[1]))
             return;
@@ -132,7 +138,7 @@ public class SkillHandler : MonoBehaviour
 
     public void OnWingSkill()
     {
-        if (activeCounterWings.Active)
+        if (activeCounterWings.Active || !activeCounterWings.Bought)
             return;
         if (!pc.energyDrain(skillCost[0]))
             return;

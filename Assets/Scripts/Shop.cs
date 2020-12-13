@@ -18,9 +18,9 @@ class SkillCost
     }
     public bool Sell(MoneyController mc)
     {
-        if (mc.money > price)
+        if (mc.money >= price)
         {
-            mc.money -= price;
+            mc.modifyMoney(mc.money - price);
             priceTag.text = "Sprzedane";
             sellBut.interactable = false;
             return true;
