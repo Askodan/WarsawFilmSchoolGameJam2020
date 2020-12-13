@@ -148,4 +148,8 @@ public class SkillHandler : MonoBehaviour
         //TODO: Enabled form of icon
         activeCounterWings.Activate(skillTime[0]);
     }
+    public bool hasAllSkills()
+    {
+        return activeCounterWings.Bought && activeCounterHands.Bought && activeCounterLegs.Bought;
+    }
 }

@@ -278,6 +278,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1512573374, guid: 8b3d9db1bcc3e1f47bb40ee74c7bf801, type: 3}
+      propertyPath: skillHandler
+      value: 
+      objectReference: {fileID: 1892086906}
     - target: {fileID: 383373723241978571, guid: 8b3d9db1bcc3e1f47bb40ee74c7bf801,
         type: 3}
       propertyPath: sh
