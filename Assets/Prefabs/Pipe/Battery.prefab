@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modifiers:
   - what: energy
-    amount: 0.2
+    amount: 0.0334
   effect: {fileID: 2258108052063152166, guid: d253ce58671931e458d2a481ad4f0aab, type: 3}
   destroyTime: 1
 --- !u!1001 &1670827982079998808

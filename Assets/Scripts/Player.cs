@@ -9,8 +9,12 @@ public class Player : MonoBehaviour {
 
   public float energyValue;
   public int moneyValue;
+  public float maxSpeed = 30f;
+  public float minSpeed = 1f;
   public float speedValue;
   private float initialSpeedValue;
+
+  public float skillBlockTimer;
 
   public void affect(Modifier[] modifiers)
   {
@@ -30,8 +34,11 @@ public class Player : MonoBehaviour {
           break;
         case "speed":
           speedValue += m.amount;
-          speedValue = Mathf.Clamp(speedValue, 0.0f, 30.0f);
+          speedValue = Mathf.Clamp(speedValue, minSpeed, maxSpeed);
           speed.modifySpeed(speedValue);
+          break;
+        case "skillblock":
+          skillBlockTimer += m.amount;
           break;
       }
     }
@@ -50,11 +57,33 @@ public class Player : MonoBehaviour {
 
   public void Update()
   {
+    if(skillBlockTimer > 0)
+      skillBlockTimer -= Time.deltaTime;
+    if(skillBlockTimer < 0)
+      skillBlockTimer = 0;
     float velDiff = speedValue - initialSpeedValue;
     if (Mathf.Abs(velDiff) > 0.01f)
     {
         speedValue -= velDiff * 0.01f;
         speed.modifySpeed(speedValue);
     }
+  }
+
+  public void bumpSpeed()
+  {
+    speedValue = maxSpeed;
+    speed.modifySpeed(speedValue);
+  }
+
+  public bool energyDrain(float value)
+  {
+    if(skillBlockTimer > 0)
+      return false;
+    if(energyValue < value)
+      return false;
+    energyValue -= value;
+    energyValue = Mathf.Clamp(energyValue, 0.0f, 1.0f);
+    energy.modifyEnergy(energyValue);
+    return true;
   }
 }

@@ -59,8 +59,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modifiers:
-  - what: speed
-    amount: -2
+  - what: skillblock
+    amount: 2
   effect: {fileID: 812443667175602658, guid: 6afb76945f5122245b90797058eb9500, type: 3}
   destroyTime: 1
 --- !u!1001 &5739329847852053936
