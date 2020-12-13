@@ -106,8 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ae5ffdb91e72e328a8bf7b478bdf15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modifiers:
-  - what: speed
-    amount: 5
+  modifiers: []
   effect: {fileID: 2258108052063152166, guid: d253ce58671931e458d2a481ad4f0aab, type: 3}
   destroyTime: 1

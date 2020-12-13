@@ -7,17 +7,44 @@ public class PlayerRotation : MonoBehaviour
 {
     public Vector3 rotationAxis = Vector3.forward;
     public float dumpThreshold = 0.1f;
-    public float accelerationPower = 100;
-    public float dumpPower = 50;
+    private float accelerationPower;
+    public float normalAccelerationPower = 50;
+    public float bumpedAccelerationPower = 100;
+    private float dumpPower;
+    public float normalDumpPower = 25;
+    public float bumpedDumpPower = 50;
     public float speedLimit = 300;
     private float steering;
     private float currentRotation;
     private float rotationSpeed;
 
+    public void Start()
+    {
+      accelerationPower = normalAccelerationPower;
+      dumpPower = normalDumpPower;
+    }
+
     private void Update()
     {
         CalculateSpeed();
         UpdateRotation();
+    }
+
+    public void bumpAcceleration()
+    {
+      accelerationPower = bumpedAccelerationPower;
+    }
+    public void debumpAcceleration()
+    {
+      accelerationPower = normalAccelerationPower;
+    }
+    public void bumpDumpPower()
+    {
+      dumpPower = bumpedDumpPower;
+    }
+    public void debumpDumpPower()
+    {
+      dumpPower = normalDumpPower;
     }
 
     private void CalculateSpeed()
@@ -32,7 +59,7 @@ public class PlayerRotation : MonoBehaviour
             rotationSpeed = Mathf.MoveTowards(rotationSpeed, 0f, dumpPower * Time.deltaTime);
         }
     }
-    
+
     private void UpdateRotation()
     {
         currentRotation += rotationSpeed * Time.deltaTime;

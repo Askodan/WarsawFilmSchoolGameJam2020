@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+
 [System.Serializable]
 public class Limb
 {
@@ -8,6 +10,7 @@ public class Limb
     public SpriteRenderer original;
     public void Load()
     {
+      ChangeLimb(false);
     }
     public void ChangeLimb(bool ifcyber)
     {
@@ -16,6 +19,8 @@ public class Limb
         cyber.SetActive(ifcyber);
     }
 }
+
+
 public class PlayerChangeLimbs : MonoBehaviour
 {
     public Limb HandRight;
@@ -24,6 +29,7 @@ public class PlayerChangeLimbs : MonoBehaviour
     public Limb LegLeft;
     public Limb WingRight;
     public Limb WingLeft;
+
     void Awake()
     {
         HandRight.Load();
@@ -33,10 +39,12 @@ public class PlayerChangeLimbs : MonoBehaviour
         WingRight.Load();
         WingLeft.Load();
     }
+
     void Start()
     {
-        StartCoroutine(changelibtest());
+        // StartCoroutine(changelibtest());
     }
+
     IEnumerator changelibtest()
     {
         bool cyber = false;

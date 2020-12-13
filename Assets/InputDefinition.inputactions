@@ -182,7 +182,7 @@
                 {
                     "name": "",
                     "id": "757047e8-fde8-4ded-b710-9960656fbf53",
-                    "path": "<Keyboard>/3",
+                    "path": "<Keyboard>/9",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -194,6 +194,17 @@
                     "name": "",
                     "id": "dbb3e54c-e87c-47a0-8aeb-374fc1fe8335",
                     "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ArmSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b15d753e-6bfa-4107-84d1-9b864f827f9b",
+                    "path": "<Keyboard>/#(KP_9)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -215,7 +226,18 @@
                 {
                     "name": "",
                     "id": "a827ed25-1dfe-4199-a6ac-2d0062536037",
-                    "path": "<Keyboard>/2",
+                    "path": "<Keyboard>/8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LegSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a5a4f917-4b81-4e71-bb14-2a889dc4268b",
+                    "path": "<Keyboard>/#(KP_8)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -237,7 +259,18 @@
                 {
                     "name": "",
                     "id": "1306eaf7-6888-4d3d-a4ac-77d8d45b6424",
-                    "path": "<Keyboard>/1",
+                    "path": "<Keyboard>/7",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WingSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5377ea4a-4c53-4127-87fb-9b9841a3af23",
+                    "path": "<Keyboard>/#(KP_7)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
