@@ -24,7 +24,7 @@ public class MoneyController : MonoBehaviour
     public void modifyMoney(int modifier)
     {
       if(moneyDisplay != null) {
-          money += modifier;
+          money = modifier;
           moneyDisplay.text = money.ToString() + moneySymbol;
       }
     }

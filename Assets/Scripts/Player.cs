@@ -29,7 +29,7 @@ public class Player : MonoBehaviour {
           break;
         case "money":
           moneyValue += (int)m.amount;
-          moneyValue = Mathf.Clamp(moneyValue, 0, 1000);
+          moneyValue = (int)Mathf.Clamp(moneyValue, 0.0f, 1000.0f);
           money.modifyMoney(moneyValue);
           break;
         case "speed":
